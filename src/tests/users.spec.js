@@ -9,7 +9,7 @@ describe('Reqres API Tests', () => {
     const updateJson = import('.payloads/updateJson.json');
     const register = import('.payloads/register.json');
 
-    it('GET call - Should fetch users', async () => {
+    it('GET call - Should get users and return 200', async () => {
 		const response = await fetch(`${BASE_URL}/api/users`,
         { method: 'GET' });
 		expect(response.status).eq(200);     
@@ -35,9 +35,6 @@ describe('Reqres API Tests', () => {
         expect(response.status).eq(200);
 
         const jsonBody = await response.json();
-		
-		console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
-
         expect(jsonBody).to.be.an('object');
     })
 
@@ -48,9 +45,6 @@ describe('Reqres API Tests', () => {
         expect(response.status).eq(200);
 
         const jsonBody = await response.json();
-		
-		console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
-
         expect(jsonBody).to.be.an('object');
     })
 
@@ -73,5 +67,10 @@ describe('Reqres API Tests', () => {
         {body: JSON.stringify({ "email": "sydney@fife"})});
         expect(response.status).eq(400);
     })
-   
+
+    it('DELETE call for Register - Should return 204', async () => {
+        const response = await fetch(`${BASE_URL}/api/users/2`,
+        {method: 'DELETE'});
+        expect(response.status).eq(204);
+    })   
 });
