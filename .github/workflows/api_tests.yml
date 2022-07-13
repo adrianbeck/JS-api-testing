@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - run: npm i -g mocha
+      - run: npm i -g mocha mochawesome
       
       - name: Tests
         run: npm test
