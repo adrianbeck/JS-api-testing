@@ -9,7 +9,7 @@ jobs:
   e2e-tests:
     name: E2E_Tests
     runs-on: ubuntu-20.04
-    container: cypress/included:10.2.0
+    container: node:16-alpine
     timeout-minutes: 10
 
     steps:
