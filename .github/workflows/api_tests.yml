@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - run: sudo chmod +x node_modules/.bin/mocha
+      - run: npm i -g mocha
       
       - name: Tests
         run: npm test
