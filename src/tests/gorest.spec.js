@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 import { expect } from 'chai';
+import { promises as fs } from 'fs';
+const { writeFile, readFile } = fs;
 
 const BASE_URL = 'https://gorest.co.in';
 
@@ -7,7 +9,7 @@ describe('GoRest API tests', () => {
 
     const token = '3b987269d5b2d4cbc365c80b12dc09327dbe9911483a6135a24ef966e4d1391f';
     var bearer = `Bearer ${token}`;
-    const postUser = import('./payloads/postUser.json');
+    //const postUser = import('./payloads/postUser.json');
 
     it ('Should GET all users', async () => {
 
@@ -38,7 +40,8 @@ describe('GoRest API tests', () => {
     })
 
     it ('Should POST a user', async () => {
-
+        
+        const postUser = await readFile('./payloads/postUser.json');
         const myHeaders = {
             'Content-Type': 'application/json',
             'Authorization': bearer
