@@ -23,3 +23,8 @@ jobs:
       
       - name: Tests
         run: npm test
+
+      - uses: actions/upload-artifact@v3
+      with:
+        name: report
+        path: mochawesome-report\mochawesome.html
