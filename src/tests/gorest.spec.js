@@ -41,7 +41,7 @@ describe('GoRest API tests', () => {
 
     it ('Should POST a user', async () => {
 
-        const postUser = await readFile('./payloads/postUser.json');
+        const postUser = JSON.parse(await readFile('src/tests/payloads/postUser.json'));
         const myHeaders = {
             'Content-Type': 'application/json',
             'Authorization': bearer
@@ -50,7 +50,7 @@ describe('GoRest API tests', () => {
         const response = await fetch(`${BASE_URL}/public/v2/users`, {
             method: 'POST',
             headers : myHeaders,
-            body: postUser
+            body: JSON.stringify(postUser)
           });
 
         const jsonBody = await response.json();
