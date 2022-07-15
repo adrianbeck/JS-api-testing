@@ -19,8 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install mocha globally 
-        run: npm i -g mocha mochawesome
+      - run: npm i --location=global mocha mochawesome
       
       - name: Tests
         run: npm test
