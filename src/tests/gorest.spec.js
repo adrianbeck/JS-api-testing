@@ -44,35 +44,35 @@ describe('GoRest API tests', () => {
             'Authorization': bearer
         };
 
-        const response = await fetch(`${BASE_URL}/public/v2/users`, {
-            method: 'POST',
-            headers : myHeaders,
-            body: JSON.stringify(postUser)
-          });
+    //     const response = await fetch(`${BASE_URL}/public/v2/users`, {
+    //         method: 'POST',
+    //         headers : myHeaders,
+    //         body: JSON.stringify(postUser)
+    //       });
 
-        const jsonBody = await response.json();
-        console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
+    //     const jsonBody = await response.json();
+    //     console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
         
-        expect(response.status).eq(200);
+    //     expect(response.status).eq(200);
      
-    })
+    // })
 
-    it ('PATCH call - Should return 200', async () => {
+    // it ('PATCH call - Should return 200', async () => {
 
-        const updateUser = JSON.parse(await readFile('src/tests/payloads/updateUser.json'));
+    //     const updateUser = JSON.parse(await readFile('src/tests/payloads/updateUser.json'));
 
-        const myHeaders = {
-            'Content-Type': 'application/json',
-            'Authorization': bearer
-        };
-        const response = await fetch(`${BASE_URL}/public/v2/users/157`,{
-        method : 'PATCH',
-        headers : myHeaders,
-        body: JSON.stringify(updateUser)});
-        expect(response.status).eq(200);
+    //     const myHeaders = {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': bearer
+    //     };
+    //     const response = await fetch(`${BASE_URL}/public/v2/users/157`,{
+    //     method : 'PATCH',
+    //     headers : myHeaders,
+    //     body: JSON.stringify(updateUser)});
+    //     expect(response.status).eq(200);
 
-        const jsonBody = await response.json();
-        console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);       
-    })
+    //     const jsonBody = await response.json();
+    //     console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);       
+     })
 
 })
