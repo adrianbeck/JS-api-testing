@@ -9,7 +9,6 @@ describe('GoRest API tests', () => {
 
     const token = '3b987269d5b2d4cbc365c80b12dc09327dbe9911483a6135a24ef966e4d1391f';
     var bearer = `Bearer ${token}`;
-    //const postUser = import('./payloads/postUser.json');
 
     it ('Should GET all users', async () => {
 
@@ -21,9 +20,6 @@ describe('GoRest API tests', () => {
         expect(response.status).eq(200);
         expect(jsonBody).to.not.be.null;
         expect(jsonBody).to.be.an('array');
-        //expect(jsonBody).deep.contains(
-        //    {"id":4040,"name":"Sweta Talwar","email":"sweta_talwar@waelchi.com","gender":"male","status":"active"}
-        //)
     });
 
     it ('Should GET a user by ID', async () =>{
@@ -39,9 +35,10 @@ describe('GoRest API tests', () => {
         expect(jsonBody).to.have.keys('id', 'name', 'email', 'gender', 'status');
     })
 
-    it ('Should POST a user', async () => {
+    it ('Should add a user', async () => {
 
         const postUser = JSON.parse(await readFile('src/tests/payloads/postUser.json'));
+
         const myHeaders = {
             'Content-Type': 'application/json',
             'Authorization': bearer
@@ -55,7 +52,27 @@ describe('GoRest API tests', () => {
 
         const jsonBody = await response.json();
         console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
+        
+        expect(response.status).eq(200);
      
+    })
+
+    it ('PATCH call - Should return 200', async () => {
+
+        const updateUser = JSON.parse(await readFile('src/tests/payloads/updateUser.json'));
+
+        const myHeaders = {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        };
+        const response = await fetch(`${BASE_URL}/public/v2/users/157`,{
+        method : 'PATCH',
+        headers : myHeaders,
+        body: JSON.stringify(updateUser)});
+        expect(response.status).eq(200);
+
+        const jsonBody = await response.json();
+        console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);       
     })
 
 })

@@ -72,11 +72,11 @@ describe('Reqres API Tests', () => {
         expect(response.status).eq(204);
     })
 
-    it('POST call for Register - Should return 200', async () => {
+    it('POST call for Register - Should return 201', async () => {
         const response = await fetch(`${BASE_URL}/api/users/register`,
         {method: 'PUT'},
         {body: JSON.stringify(register.json)});
-        expect(response.status).eq(200);
+        expect(response.status).eq(201);
     })
 
     it('POST call for Register - Should return 400', async () => {

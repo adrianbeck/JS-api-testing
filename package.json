@@ -9,7 +9,7 @@
 		"url": ""
 	},
 	"scripts": {
-		"test": "mocha src/tests/**/gorest.spec.js --reporter mochawesome",
+		"test": "mocha src/tests/**.spec.js --reporter mochawesome",
 		"start": "node src/index.js",
 		"publish": "npm publish --access public"
 	},
