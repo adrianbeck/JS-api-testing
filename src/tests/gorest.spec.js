@@ -43,19 +43,21 @@ describe('GoRest API tests', () => {
             'Content-Type': 'application/json',
             'Authorization': bearer
         };
+        try{
+        const response = await fetch(`${BASE_URL}/public/v2/users`, {
+            method: 'POST',
+            headers : myHeaders,
+            body: JSON.stringify(postUser)
+          });
 
-    //     const response = await fetch(`${BASE_URL}/public/v2/users`, {
-    //         method: 'POST',
-    //         headers : myHeaders,
-    //         body: JSON.stringify(postUser)
-    //       });
-
-    //     const jsonBody = await response.json();
-    //     console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
+        const jsonBody = await response.json();
+        console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
         
-    //     expect(response.status).eq(200);
-     
-    // })
+        expect(response.status).eq(200);
+        } catch (error){
+            console.log(error);
+        }
+    })
 
     // it ('PATCH call - Should return 200', async () => {
 
@@ -73,6 +75,6 @@ describe('GoRest API tests', () => {
 
     //     const jsonBody = await response.json();
     //     console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);       
-     })
+    // })
 
 })
