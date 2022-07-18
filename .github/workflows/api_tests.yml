@@ -25,7 +25,9 @@ jobs:
       - name: Tests
         run: npm test
 
-      - uses: actions/upload-artifact@v3
+      - run: echo 'run always'
+        if: succeded() || failed()
+        uses: actions/upload-artifact@v3
         with:
           name: report
           path: mochawesome-report/

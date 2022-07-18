@@ -72,22 +72,22 @@ describe('Reqres API Tests', () => {
         expect(response.status).eq(204);
     })
 
-    // it('POST call for Register - Should return 201', async () => {
-    //     const response = await fetch(`${BASE_URL}/api/users/register`,
-    //     {method: 'PUT'},
-    //     {body: JSON.stringify(register.json)});
-    //     expect(response.status).eq(201);
-    // })
+    it('POST call for Register - Should return 201', async () => {
+        const response = await fetch(`${BASE_URL}/api/users/register`,
+        {method: 'PUT'},
+        {body: JSON.stringify(register.json)});
+        expect(response.status).eq(201);
+    })
 
-    // it('POST call for Register - Should return 400', async () => {
-    //     const response = await fetch(`${BASE_URL}/api/users/register`,
-    //     {method: 'POST'},
-    //     {body: JSON.stringify({ "email": "sydney@fife"})});
-    //     const jsonBody = await response.json();
-    //     console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
-    //     expect(response.status).eq(400);
-    //     expect(response.statusText).eq('Bad Request');
-    // })
+    it('POST call for Register - Should return 400', async () => {
+        const response = await fetch(`${BASE_URL}/api/users/register`,
+        {method: 'POST'},
+        {body: JSON.stringify({ "email": "sydney@fife"})});
+        const jsonBody = await response.json();
+        console.log(`jsonBody: ${JSON.stringify(jsonBody)}`);
+        expect(response.status).eq(400);
+        expect(response.statusText).eq('Bad Request');
+    })
 
     it('DELETE call for Register - Should return 204', async () => {
         const response = await fetch(`${BASE_URL}/api/users/2`,
