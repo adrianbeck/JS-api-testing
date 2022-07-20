@@ -1,4 +1,5 @@
 const continentSelect = document.getElementById('continent-select');
+const countryList = document.getElementById('countries-list');
 
  queryFetch(`
     query{
@@ -19,6 +20,13 @@ const continentSelect = document.getElementById('continent-select');
 continentSelect.addEventListener('change', async e => {
     const continentCode = e.target.value
     const countries = await getContinentCountries(continentCode)
+    //console.log(countries)
+    countryList.innerHTML = ''
+    countries.forEach(country =>{
+        const element = document.createElement('div')
+        element.innerText = country.name
+        countryList.append(element)
+    })
 })
 
 function getContinentCountries(continentCode){
