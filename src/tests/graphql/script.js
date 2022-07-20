@@ -23,9 +23,9 @@ continentSelect.addEventListener('change', async e => {
 
 function getContinentCountries(continentCode){
     return queryFetch(`
-        query getCountries ($code : String) {
+        query getCountries($code: ID!){
             continent(code: $code) {
-                countries {
+                countries{
                     name
                 }
             }
@@ -36,12 +36,13 @@ function getContinentCountries(continentCode){
     })
 }
 
-function queryFetch(query) {
+function queryFetch(query, variables) {
     return fetch('https://countries.trevorblades.com', {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-            query: query
+            query: query,
+            variables: variables
         })
     }).then(res => res.json())
 
